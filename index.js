@@ -1,27 +1,4 @@
 /*
-myReduce(collection, callback, acc)
-
-Parameter(s):
-  a collection (either an object or an array)
-  a callback function
-  a starting value for the accumulator (optional)
-
-Return value:
-  A single value
-
-Behavior:
-  Reduce iterates through a collection of values and boils it down into a single value.
-  acc (short for accumulator) starts at the value that's passed in as an argument, and
-  with each successive step is updated to the return value of callback. If a start
-  value is not passed to myReduce, the first value in the collection should be used as
-  the start value.
-
-  The callback is passed three arguments: the current value of acc, the current
-  element/value in our iteration, and a reference to the entire collection.
-
-  Hint: For the case when a start value for the accumulator is not passed in as an
-  argument, think about how you'll need to adjust your function to account for the
-  fact that the first element of the collection has already been accounted for.
 */
 
 function myEach (collection, callback) {
@@ -57,18 +34,26 @@ function myMap (collection, callback) {
 
 function myReduce (collection, callback, acc) {
   if (Array.isArray(collection)) {
-    for (let i = 0; i < collection.length; i++) {
-      acc = callback(acc, collection[i], collection)
+    if (acc === undefined) {
+      acc = collection[0]
+      for (let i = 1; i < collection.length; i++) {
+        acc = callback(acc, collection[i], collection)
+      }
+      return acc
+    } else {
+      for (let i = 0; i < collection.length; i++) {
+        acc = callback(acc, collection[i], collection)
+      }
+      return acc
     }
-    return acc
   } else {
     let newArr = Object.values(collection)
-    for (let i = 0; i < newArr.length; i++) {
-      newArr = callback(newArr, collection[i], collection)
+    if (acc === undefined) {
+      acc = newArr[0]
     }
-    return newArr
+    for (let i = 1; i < newArr.length; i++) {
+      acc = callback(acc, newArr[i], newArr)
+    }
+    return acc
   }
 }
-
-myReduce([1, 2, 3], function(acc, val, collection) { return acc + val;}, 0);
-myReduce({one: 1, two: 2, three: 3}, function(acc, val, collection) { return acc + val; });
