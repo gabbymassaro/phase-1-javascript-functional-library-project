@@ -1,4 +1,18 @@
 /*
+myFind(collection, predicate)
+
+Parameter(s):
+  a collection (either an object or an array)
+  a predicate (a callback function that returns true or false)
+
+Return value:
+  A single value
+
+Behavior:
+  Looks through each value in the collection, returning the first one that passes
+  a truth test (predicate) or undefined if no value passes the test. The function
+  should return as soon as it finds an acceptable element, without traversing the
+  rest of the collection.
 */
 
 function myEach (collection, callback) {
@@ -55,5 +69,16 @@ function myReduce (collection, callback, acc) {
       acc = callback(acc, newArr[i], newArr)
     }
     return acc
+  }
+}
+
+function myFind(collection, callback) {
+  if (Array.isArray(collection)) {
+    for (let i = 0; i < collection.length; i++) {
+      if (callback(collection[i]) === true) {
+        return collection[i]
+        break
+      }
+    }
   }
 }
