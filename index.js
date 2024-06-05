@@ -111,6 +111,9 @@ function myLast (array, n) {
 }
 
 function myKeys (object) {
-  let keys = Object.keys(object)
-  return keys
+  let newArr = []
+  for (const element in object) {
+    newArr.push(element)
+  }
+  return newArr
 }
