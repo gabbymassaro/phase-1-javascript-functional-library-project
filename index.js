@@ -87,17 +87,9 @@ function myFilter(collection, callback) {
 
 function mySize(collection) {
   if (Array.isArray(collection)) {
-    let count = 0
-    for (let i = 0; i < collection.length; i++) {
-      count = collection[i]++
-    }
-    return count
+    return collection.length
   } else {
     let newArr = Object.values(collection)
-    let count = 0
-    for (let i = 0; i < newArr.length; i++) {
-      count = newArr[i]++
-    }
-    return count
+    return newArr.length
   }
 }
