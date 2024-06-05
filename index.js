@@ -101,3 +101,11 @@ function myFirst (array, n) {
     return array[0]
   }
 }
+
+function myLast (array, n) {
+  if (array, n) {
+    return array.slice(array.length - n)
+  } else if (array) {
+    return array[array.length - 1]
+  }
+}
