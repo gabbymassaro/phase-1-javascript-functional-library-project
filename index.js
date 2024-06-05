@@ -109,3 +109,8 @@ function myLast (array, n) {
     return array[array.length - 1]
   }
 }
+
+function myKeys (object) {
+  let keys = Object.keys(object)
+  return keys
+}
