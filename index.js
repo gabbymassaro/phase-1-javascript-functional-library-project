@@ -93,3 +93,11 @@ function mySize(collection) {
     return newArr.length
   }
 }
+
+function myFirst (array, n) {
+  if (array, n) {
+    return array.slice(0, n)
+  } else if (array) {
+    return array[0]
+  }
+}
