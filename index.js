@@ -117,3 +117,11 @@ function myKeys (object) {
   }
   return newArr
 }
+
+function myValues (object) {
+  let newArr = []
+  for (const [key, value] of Object.entries(object)) {
+    newArr.push(value)
+  }
+  return newArr
+}
